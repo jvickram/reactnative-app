@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, Image } from 'react-native'
+import { Text, View, Image, Linking } from 'react-native'
 import Card from './Card'
 import CardSection from './CardSection'
 import Button from './Button'
@@ -7,7 +7,7 @@ import Button from './Button'
 // Destructure from props to album
 const AlbumDetail = ({album}) => {
 // Destructure from album and style
-const { title, artist, thumbnail_image, image} = album
+const { title, artist, thumbnail_image, image, url } = album
 const { 
     headerContentStyle,
     headerTextStyle,
@@ -35,8 +35,10 @@ return(
         </CardSection>
         
         <CardSection>
-            <Button 
-            style={imageStyle} />
+            <Button onPress= {() => Linking.openURL(url)}
+            style={imageStyle}>
+                Buy Now
+            </Button>
         </CardSection>
     </Card>
 )
